@@ -1,33 +1,27 @@
 class Solution {
 public:
     int maxSubArray(vector<int>& nums) {
-        int curr = 0, m = 0;
-        bool flag = true;
-        int mel = INT_MIN;
-        for(int i=0;i<nums.size();i++) {
-            if(nums[i]>0) {
-                flag = false;
-            }
+        int f = 0, sum = 0, i, n, maxn, maxe = nums[0];
+        maxn = INT_MIN;
+        n = nums.size();
+        for(i=0;i<n;i++) {
+            sum += nums[i];
+            if (nums[i]>0)
+                f = 1;
             
-            if(nums[i]>mel) {
-                mel = nums[i];
-            }
+            if (nums[i]>maxe)
+                maxe = nums[i];
             
-            curr += nums[i]; 
-            if(curr<0) {
-                curr=0;
-                continue;
-            }
+            if (sum>maxn) 
+                maxn = sum;
             
-            if(curr>m) {
-                m = curr;
-            }
+            if (sum<0)
+                sum = 0;            
         }
         
-        if (flag) {
-            return mel;
-        }
+        if (f==0)
+            return maxe;
         
-        return m;
+        return maxn;
     }
 };
