@@ -1,19 +1,5 @@
 class Solution {
 public:
-    int helper(string a, string b, int i, int j, vector<vector<int>>& memo) {
-        if (i>a.length()-1 or j>b.length()-1) return 0;
-        
-        if (memo[i][j]!=-1) return memo[i][j];
-        
-        int count = 0;
-        
-        if (a[i]==b[j]) {
-            count = 1 + helper(a, b, i+1, j+1, memo);
-        } else {
-            count = max(helper(a, b, i+1, j, memo), helper(a, b, i, j+1, memo));
-        }
-        return memo[i][j] = count;
-    }
     int longestCommonSubsequence(string text1, string text2) {
         int n, m;
         n = text1.length();
