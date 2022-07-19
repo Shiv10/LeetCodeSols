@@ -25,7 +25,6 @@ public:
             head = head->next;
             return head;
         }
-        ListNode *prev = nullptr;
         
         temp = head;
         c = 0;
